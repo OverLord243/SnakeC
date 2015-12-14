@@ -10,7 +10,8 @@ namespace SnakeGame_console
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1,3,'*');
+            Console.SetBufferSize(80, 25);
+            Point p1 = new Point(6,6,'*');
             p1.Draw();
        
                 Point p2 = new Point(4,5,'#');
@@ -20,36 +21,15 @@ namespace SnakeGame_console
                 p3.Draw();
 
 
-                List<int> numList = new List<int>();
-                numList.Add(0);
-                numList.Add(1);
-                numList.Add(2);
-
-                int x = numList[0];
-            int y= numList[1];
-            int z=numList[2];
-
-
-
-            //  int x1 = 1;
-            //   int y1 = 3;
-            //    char sym1 = '*';
-
-
-            //    int x2 = 4;
-            //   int y2 = 5;
-            //  char sym2 = '#';
-            //  Draw(x2, y2, sym2);
-
- numList.RemoveAt(0);
-
-            foreach (int i in numList)
-            {
-                Console.WriteLine(i);
-            }
-            List<Point> pList = new List<Point>();
-            pList.Add(p1);
-            pList.Add(p2);
+                HorisontalLine hline = new HorisontalLine(0,78,0,'+');
+                hline.Draw();
+                HorisontalLine hline2 = new HorisontalLine(0, 78, 24, '+');
+                hline2.Draw();
+                VerticalLine vline = new VerticalLine(0, 24, 0, '+');
+                vline.Draw();
+                VerticalLine vline2 = new VerticalLine(0, 24, 78, '+');
+                vline2.Draw();
+       
            
 
             Console.ReadLine();
