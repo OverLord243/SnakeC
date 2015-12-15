@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SnakeGame_console
 {
-    class Wall
+    class Walls
     {
         List<Figure> wallList;
 
-        public Wall(int mapWidth, int mapHeight)
+        public Walls(int mapWidth, int mapHeight)
         {
             wallList = new List<Figure>();
 
             //Рисуем рамку
-            HorisontalLine upLine = new HorisontalLine(0, mapWidth - 2, 0, '+');
-            HorisontalLine downline = new HorisontalLine(0, mapWidth - 2, mapHeight - 1, '+');
-            VerticalLine leftLine = new VerticalLine(0, mapHeight - 1, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, mapHeight - 1, mapWidth - 2, '+');
+            HorisontalLine upLine = new HorisontalLine(0, mapWidth - 2, 0, '-');
+            HorisontalLine downline = new HorisontalLine(0, mapWidth - 2, mapHeight - 1, '-');
+            VerticalLine leftLine = new VerticalLine(0, mapHeight - 1, 0, '|');
+            VerticalLine rightLine = new VerticalLine(0, mapHeight - 1, mapWidth - 2, '|');
 
             wallList.Add(upLine);
             wallList.Add(downline);
@@ -30,9 +30,9 @@ namespace SnakeGame_console
 
         internal bool IsHit(Figure figure)
         {
-            foreach (var wall in wallList)
+            foreach (var walls in wallList)
             {
-                if (wall.IsHit(figure))
+                if (walls.IsHit(figure))
                 {
                     return true;
                 }
@@ -48,9 +48,9 @@ namespace SnakeGame_console
 
     public void Draw()
 {
-    foreach (var wall in wallList)
+    foreach (var walls in wallList)
 {
-    wall.Draw();
+    walls.Draw();
 }
 }
 }

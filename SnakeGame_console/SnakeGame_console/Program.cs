@@ -30,7 +30,7 @@ namespace SnakeGame_console
                * OLD CODE
             */
             //Новые стенки-препятсвия вокруг окна
-            Wall walls = new Wall(80, 25);
+            Walls walls = new Walls(80, 25);
             walls.Draw();
             //Рисуем препятствия
                 HorisontalLine vall1 = new HorisontalLine(20, 27, 18, '_');
@@ -41,9 +41,9 @@ namespace SnakeGame_console
           
 //Рисуем точки(змейку)
                 Console.ForegroundColor = ConsoleColor.Green;
-                Point p = new Point(24, 10, '*');
+                Point p = new Point(28, 12, '*');
                 
-                Snake snake = new Snake(p, 4, Direction.RIGHT);
+                Snake snake = new Snake(p, 3, Direction.RIGHT);
                 
                 snake.Draw();
 //Рисуем еду змейке)
@@ -70,9 +70,12 @@ namespace SnakeGame_console
                 {
                     if (walls.IsHit(snake) || snake.IsHitTail()) //если врезался в стенку или свой хвост брякнуть прогу.
                     {
+                        Console.WriteLine("End Game");
                         break;
+                        
+                     
                     }
-
+                    
                     
                     if (snake.Eat(food))
                     { food=foodCreate.CreateFood();
