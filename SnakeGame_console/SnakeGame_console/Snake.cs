@@ -13,6 +13,7 @@ namespace SnakeGame_console
 
         public Snake(Point tail, int lenght, Direction direction)
         {
+
             pList=new List<Point>();
             for (int i = 0; i < lenght; i++)
             {
@@ -35,6 +36,7 @@ namespace SnakeGame_console
 
         private Point GetNextPoint()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
     Point head = pList.Last();
             Point nextPoint = new Point( head );
             nextPoint.Move(1, direction);
@@ -46,7 +48,8 @@ namespace SnakeGame_console
             Point head = GetNextPoint();      
             if (head.isHit(food))
             {
-                
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                 
                 food.sym = head.sym;
                 pList.Add(food);
                 return true;

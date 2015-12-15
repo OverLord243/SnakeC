@@ -25,8 +25,9 @@ this.sym=sym;
 
         public Point CreateFood()
         {
-            int x = random.Next(78);
-            int y = random.Next(24 );
+            int x = random.Next(77);
+            int y = random.Next(23);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             return new Point(x, y, sym);
         }
         }

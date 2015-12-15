@@ -17,30 +17,37 @@ namespace SnakeGame_console
               
 
             //Рисуем стенки-рамки
-                HorisontalLine upline = new HorisontalLine(0,78,0,'+');
+                HorisontalLine upline = new HorisontalLine(0,78,0,'-');
                 upline.Draw();
-                HorisontalLine downline = new HorisontalLine(0, 78, 24, '+');
+                HorisontalLine downline = new HorisontalLine(0, 78, 24, '-');
                 downline.Draw();
-                VerticalLine vline = new VerticalLine(0, 24, 0, '+');
+                VerticalLine vline = new VerticalLine(0, 24, 0, '|');
                 vline.Draw();
-                VerticalLine vline2 = new VerticalLine(0, 24, 78, '+');
+                VerticalLine vline2 = new VerticalLine(0, 24, 78, '|');
                 vline2.Draw();
-            
+
+            //Рисуем препятствия
+                HorisontalLine vall1 = new HorisontalLine(20, 27, 18, '_');
+                vall1.Draw();
 
             
-            //Рисуем еще какие то решетки(наверное будут препятствия)
-                Point p2 = new Point(4, 5, '#');
-                p2.Draw();
-                Point p3 = new Point(9, 9, '#');
-                p3.Draw();
+            
+          
 //Рисуем точки(змейку)
+                Console.ForegroundColor = ConsoleColor.Green;
                 Point p = new Point(24, 10, '*');
+                
                 Snake snake = new Snake(p, 4, Direction.RIGHT);
+                
                 snake.Draw();
 
                 FoodCreator foodCreate = new FoodCreator(78, 24, '%');
                 Point food = foodCreate.CreateFood();
+                Console.ForegroundColor = ConsoleColor.Green;
                 food.Draw();
+
+               
+
                 Point food2 = foodCreate.CreateFood();
                 food2.Draw();
 
@@ -51,17 +58,20 @@ namespace SnakeGame_console
 
 
 
-
+//Рисуем еду змейке)
 
                 while (true)
                 {
-
+                    
                     if (snake.Eat(food))
                     { food=foodCreate.CreateFood();
-                        food.Draw();
+                
+                        food.Draw();     
                     }
                         else if   (snake.Eat(food2))
                     { food2=foodCreate.CreateFood();
+                    food = foodCreate.CreateFood();
+                   
                         food2.Draw();
                     }
                         else
