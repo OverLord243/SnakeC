@@ -46,6 +46,10 @@ namespace SnakeGame_console
             }
 
         }
+        public bool isHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
+        }
 
         public void Draw()
         {

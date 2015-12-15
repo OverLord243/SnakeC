@@ -35,10 +35,24 @@ namespace SnakeGame_console
 
         private Point GetNextPoint()
         {
-            Point head = pList.Last();
+    Point head = pList.Last();
             Point nextPoint = new Point( head );
             nextPoint.Move(1, direction);
             return nextPoint;
+        }
+    
+        internal bool Eat (Point food)
+        {
+            Point head = GetNextPoint();      
+            if (head.isHit(food))
+            {
+                
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+                return false;
         }
         
         public void KeyPressi(ConsoleKey Key)

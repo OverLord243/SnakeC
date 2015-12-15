@@ -34,12 +34,38 @@ namespace SnakeGame_console
                 Point p3 = new Point(9, 9, '#');
                 p3.Draw();
 //Рисуем точки(змейку)
-                Point p = new Point(10, 16, '*');
+                Point p = new Point(24, 10, '*');
                 Snake snake = new Snake(p, 4, Direction.RIGHT);
                 snake.Draw();
 
+                FoodCreator foodCreate = new FoodCreator(78, 24, '%');
+                Point food = foodCreate.CreateFood();
+                food.Draw();
+                Point food2 = foodCreate.CreateFood();
+                food2.Draw();
+
+
+
+
+
+
+
+
+
+
                 while (true)
                 {
+
+                    if (snake.Eat(food))
+                    { food=foodCreate.CreateFood();
+                        food.Draw();
+                    }
+                        else if   (snake.Eat(food2))
+                    { food2=foodCreate.CreateFood();
+                        food2.Draw();
+                    }
+                        else
+                        {
                     if (Console.KeyAvailable)
                     {
                         ConsoleKeyInfo key = Console.ReadKey();
@@ -48,7 +74,7 @@ namespace SnakeGame_console
                 Thread.Sleep(100); // задержка между циклами(скорость змейки)
                 snake.Move();
                 }
-                
+                }
             
 
 
