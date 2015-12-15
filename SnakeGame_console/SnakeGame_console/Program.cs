@@ -17,7 +17,7 @@ namespace SnakeGame_console
               
 
             //Рисуем стенки-рамки
-                HorisontalLine upline = new HorisontalLine(0,78,0,'-');
+              /*  HorisontalLine upline = new HorisontalLine(0,78,0,'-');
                 upline.Draw();
                 HorisontalLine downline = new HorisontalLine(0, 78, 24, '-');
                 downline.Draw();
@@ -25,7 +25,13 @@ namespace SnakeGame_console
                 vline.Draw();
                 VerticalLine vline2 = new VerticalLine(0, 24, 78, '|');
                 vline2.Draw();
-
+               * 
+               * 
+               * OLD CODE
+            */
+            //Новые стенки-препятсвия вокруг окна
+            Wall walls = new Wall(80, 25);
+            walls.Draw();
             //Рисуем препятствия
                 HorisontalLine vall1 = new HorisontalLine(20, 27, 18, '_');
                 vall1.Draw();
@@ -40,7 +46,7 @@ namespace SnakeGame_console
                 Snake snake = new Snake(p, 4, Direction.RIGHT);
                 
                 snake.Draw();
-
+//Рисуем еду змейке)
                 FoodCreator foodCreate = new FoodCreator(78, 24, '%');
                 Point food = foodCreate.CreateFood();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -58,10 +64,15 @@ namespace SnakeGame_console
 
 
 
-//Рисуем еду змейке)
 
+//Проверяем на столкновения
                 while (true)
                 {
+                    if (walls.IsHit(snake) || snake.IsHitTail()) //если врезался в стенку или свой хвост брякнуть прогу.
+                    {
+                        break;
+                    }
+
                     
                     if (snake.Eat(food))
                     { food=foodCreate.CreateFood();
@@ -76,7 +87,7 @@ namespace SnakeGame_console
                     }
                         else
                         {
-                    if (Console.KeyAvailable)
+                    if (Console.KeyAvailable) //Тут змейка принимает нажатую клавишу и поворачивает
                     {
                         ConsoleKeyInfo key = Console.ReadKey();
                         snake.KeyPressi(key.Key);
