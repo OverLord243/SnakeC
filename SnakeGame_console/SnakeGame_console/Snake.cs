@@ -9,7 +9,7 @@ namespace SnakeGame_console
     class Snake :Figure
        
     {
-         Direction direction;
+         public Direction direction;
 
         public Snake(Point tail, int lenght, Direction direction)
         {

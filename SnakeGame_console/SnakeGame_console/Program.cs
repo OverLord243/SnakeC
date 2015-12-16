@@ -9,6 +9,9 @@ namespace SnakeGame_console
 {
     class Program
     {
+
+        static public Snake CurrentSnake = null;
+        static public Point CurrentPoint = null;
         static void Main(string[] args)
         {  //Делаем размер окошка, и чтоб он не растягивался
             Console.SetBufferSize(80, 25);
@@ -32,9 +35,7 @@ namespace SnakeGame_console
             //Новые стенки-препятсвия вокруг окна
             Walls walls = new Walls(80, 25);
             walls.Draw();
-            //Рисуем препятствия
-                HorisontalLine vall1 = new HorisontalLine(20, 27, 18, '_');
-                vall1.Draw();
+          
 
             
             
@@ -42,9 +43,10 @@ namespace SnakeGame_console
 //Рисуем точки(змейку)
                 Console.ForegroundColor = ConsoleColor.Green;
                 Point p = new Point(28, 12, '*');
-                
+                CurrentPoint = p;
                 Snake snake = new Snake(p, 3, Direction.RIGHT);
-                
+                CurrentSnake = snake;
+             
                 snake.Draw();
 //Рисуем еду змейке)
                 FoodCreator foodCreate = new FoodCreator(78, 24, '%');
@@ -94,6 +96,7 @@ namespace SnakeGame_console
                     {
                         ConsoleKeyInfo key = Console.ReadKey();
                         snake.KeyPressi(key.Key);
+
                     }
                 Thread.Sleep(100); // задержка между циклами(скорость змейки)
                 snake.Move();
